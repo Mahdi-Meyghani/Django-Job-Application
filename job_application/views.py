@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import ApplicationForm
+from .forms import ApplicationForm, ContactForm
 from .models import Form
 from django.contrib import messages
 from django.core.mail import EmailMessage
@@ -39,4 +39,17 @@ def about(request):
 
 
 def contact(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data["email"]
+            textarea = form.cleaned_data["textarea"]
+
+            body_message = f"from: {email}\n\n{textarea}"
+            email_message = EmailMessage("Message From Contact Us (Job Application)",
+                                         body_message,
+                                         to=["boochip02@gmail.com"])
+            email_message.send()
+            messages.success(request, "Your Email has sent successfully, thanks.")
+
     return render(request, "contact.html")
