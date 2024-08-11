@@ -22,11 +22,11 @@ This web application is built using Django and HTML. It allows users to fill out
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Mahdi-Meyghani/Django-Job-Application.git
    
 2. Navigate to the project directory:
    ```bash
-   cd job-application-form
+   cd Django-Job-Application
    
 3. Install the required packages:
    ```bash
